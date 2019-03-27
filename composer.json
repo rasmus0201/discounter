@@ -1,0 +1,9 @@
+{
+    "name": "rasmus/discounts",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Discounter\\": "Discounter/"
+        }
+    }
+}
