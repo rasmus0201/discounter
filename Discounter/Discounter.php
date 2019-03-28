@@ -7,7 +7,7 @@ use Discounter\Contracts\Discountable;
 class Discounter extends BaseDiscounter implements Discountable
 {
     /**
-    * @var \stdClass|null
+    * @var \stdClass
     */
     private $currentRule;
 
@@ -17,17 +17,17 @@ class Discounter extends BaseDiscounter implements Discountable
     private $initialised = false;
 
     /**
-     * @var float|null
+     * @var float
      */
     protected $price;
 
     /**
-     * @var int|null
+     * @var int
      */
     protected $qty;
 
     /**
-     * @var array|null
+     * @var array
      */
     protected $rules;
 
