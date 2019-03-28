@@ -1,3 +1,5 @@
+[![Generic badge](https://img.shields.io/badge/PHP-7.1%2B-green.svg)](#)
+
 # Discounter
 
 Use the discounter as the following: (more examples in products.php)
