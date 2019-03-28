@@ -3,7 +3,7 @@
 Use the discounter as the following: (more examples in products.php)
 ```php
 $basePrice = 1000;
-$qty = 10;
+$cartQty = 10;
 
 $rule1 = new \stdClass();
 $rule1->operator = '>=';
