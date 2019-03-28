@@ -143,7 +143,7 @@ class Discounter extends BaseDiscounter implements Discountable
         // Call the the mapped method,
         // with qty parameters to do logic
         return call_user_func_array(
-            [$this, self::OPERATORS[$this->currentRule->operator]],
+            [$this, self::$operators[$this->currentRule->operator]],
             [$this->qty, $this->currentRule->qty]
         );
     }

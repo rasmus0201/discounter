@@ -7,7 +7,7 @@ abstract class BaseDiscounter
     /**
      * @var array
      */
-    protected const OPERATORS = [
+    protected static $operators = [
         '>=' => 'gte',
         '>' => 'gt',
         '<=' => 'lte',
@@ -29,7 +29,7 @@ abstract class BaseDiscounter
      */
     protected static function hasOperator(string $operator)
     {
-        return in_array($operator, array_keys(self::OPERATORS));
+        return in_array($operator, array_keys(self::$operators));
     }
 
     /**
