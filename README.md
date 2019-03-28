@@ -4,7 +4,7 @@
 
 ### Installation
 
-Use composer to install the Discounter: `composer install`. You can now use the discounter where you want, just use the following use statement:
+Use composer to install the Discounter: `composer install`. You can now use the discounter where you want.
 
 ### Usage
 
