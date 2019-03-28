@@ -39,7 +39,7 @@ $rules = [
     $rule3
 ];
 
-$discountedPrice = Discounter\Discounter::calculate($basePrice, $cartQty, $rules)->get();
+$discountedPrice = Discounter::calculate($basePrice, $cartQty, $rules)->get();
 ```
 
 ### Available operators:
