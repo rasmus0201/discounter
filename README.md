@@ -6,14 +6,12 @@
 
 Use composer to install the Discounter: `composer install`. You can now use the discounter where you want, just use the following use statement:
 
-```php
-use Discounter\Discounter;
-```
-
 ### Usage
 
 Use the discounter as the following: (more examples in products.php)
 ```php
+use Discounter\Discounter; // Remember to include the Discounter from its namespace
+
 $basePrice = 1000;
 $cartQty = 10;
 
