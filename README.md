@@ -2,8 +2,16 @@
 
 # Discounter
 
+### Installation
+
+Use composer to install the Discounter: `composer install`. You can now use the discounter where you want.
+
+### Usage
+
 Use the discounter as the following: (more examples in products.php)
 ```php
+use Discounter\Discounter; // Remember to include the Discounter from its namespace
+
 $basePrice = 1000;
 $cartQty = 10;
 
@@ -31,7 +39,7 @@ $rules = [
     $rule3
 ];
 
-$discountedPrice = Discounter\Discounter::calculate($basePrice, $cartQty, $rules)->get();
+$discountedPrice = Discounter::calculate($basePrice, $cartQty, $rules)->get();
 ```
 
 ### Available operators:
