@@ -23,6 +23,6 @@ class DiscounterServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(Discountable::class, SimpleDiscounter::class);
+        $this->app->bind('Bundsgaard\Discounter\Contracts\Discountable', SimpleDiscounter::class);
     }
 }
