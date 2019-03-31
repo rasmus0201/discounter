@@ -1,16 +1,11 @@
 <?php
 
-namespace Discounter;
+namespace Bundsgaard\Discounter;
 
-use Discounter\Contracts\Discountable;
+use Bundsgaard\Discounter\Contracts\Discountable;
 
-class Discounter extends BaseDiscounter implements Discountable
+class SimpleDiscounter extends BaseDiscounter implements Discountable
 {
-    /**
-     * @var bool
-     */
-    private $initialised = false;
-
     /**
      * @var float
      */
@@ -54,7 +49,17 @@ class Discounter extends BaseDiscounter implements Discountable
      */
     public function get()
     {
-        return round($this->price, self::$precision);
+        return round($this->price, $this->precision);
+    }
+
+    /**
+     * Method to set precision
+     *
+     * @param int $precision
+     */
+    public function setPrecision(int $precision)
+    {
+        $this->precision = $precision;
     }
 
     /**
@@ -70,7 +75,7 @@ class Discounter extends BaseDiscounter implements Discountable
 
         foreach ($this->rules as $rule) {
             $this->maybeApply($rule, function($ruleToApply) {
-                $this->price = $this->calculatePrice($ruleToApply);
+                $this->price = $this->priceAfterRule($ruleToApply);
             });
         }
     }
@@ -82,7 +87,7 @@ class Discounter extends BaseDiscounter implements Discountable
      *
      * @return float
      */
-    private function calculatePrice($rule)
+    private function priceAfterRule($rule)
     {
         if ($rule->type == 'percentage') {
             return self::calculatePercentage($this->price, $rule->amount);

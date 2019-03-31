@@ -1,13 +1,13 @@
 <?php
 
-namespace Discounter;
+namespace Bundsgaard\Discounter;
 
 abstract class BaseDiscounter
 {
     /**
      * @var array
      */
-    protected static $operators = [
+    protected $operators = [
         '>=' => 'gte',
         '>' => 'gt',
         '<=' => 'lte',
@@ -18,7 +18,7 @@ abstract class BaseDiscounter
     /**
      * @var int
      */
-    protected static $precision = 2;
+    protected $precision = 2;
 
     /**
      * Method to apply rule if it evalutes to true
@@ -33,7 +33,7 @@ abstract class BaseDiscounter
      */
     protected function maybeApply(\stdClass $rule, \Closure $fn)
     {
-        if (!self::hasOperator($rule->operator)) {
+        if (!$this->hasOperator($rule->operator)) {
             throw new \Exception('Unkown operator "' . $rule->operator . '"');
         }
 
@@ -58,7 +58,7 @@ abstract class BaseDiscounter
         // Call the the mapped method,
         // with qty parameters to do logic
         return call_user_func_array(
-            [$this, self::$operators[$rule->operator]],
+            [$this, $this->operators[$rule->operator]],
             [$this->qty, $rule->qty]
         );
     }
@@ -70,9 +70,9 @@ abstract class BaseDiscounter
      *
      * @return bool
      */
-    protected static function hasOperator(string $operator)
+    protected function hasOperator(string $operator)
     {
-        return in_array($operator, array_keys(self::$operators));
+        return in_array($operator, array_keys($this->operators));
     }
 
     /**

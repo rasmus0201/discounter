@@ -1,6 +1,6 @@
 <?php
 
-namespace Discounter\Contracts;
+namespace Bundsgaard\Discounter\Contracts;
 
 interface Discountable
 {
@@ -17,4 +17,9 @@ interface Discountable
      * Get the discounted price
      */
     public function get();
+
+    /**
+     * Set the number of decimal places
+     */
+    public function setPrecision(int $precision);
 }

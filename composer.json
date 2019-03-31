@@ -1,9 +1,24 @@
 {
-    "name": "rasmus/discounts",
+    "name": "bundsgaard/discounter",
+    "description": "Discount product prices based on cart qty and simple rules.",
+    "authors": [
+        {
+            "name": "Rasmus Bundsgaard",
+            "email": "bundsgaard.rasmus@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
     "require": {},
     "autoload": {
         "psr-4": {
-            "Discounter\\": "Discounter/"
+            "Bundsgaard\\Discounter\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bundsgaard\\Discounter\\DiscounterServiceProvider"
+            ]
         }
     }
 }

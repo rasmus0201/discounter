@@ -4,13 +4,13 @@
 
 ### Installation
 
-Use composer to install the Discounter: `composer install`. You can now use the discounter where you want.
+Use composer to install the Discounter: `composer require bundsgaard/discounter`. You can now use the discounter where you want.
 
 ### Usage
 
-Use the discounter as the following: (more examples in products.php)
+Use the discounter as the following:
 ```php
-use Discounter\Discounter; // Remember to include the Discounter from its namespace
+use Bundsgaard\Discounter\SimpleDiscounter; // Remember to include the Discounter from its namespace
 
 $basePrice = 1000;
 $cartQty = 10;
@@ -39,7 +39,9 @@ $rules = [
     $rule3
 ];
 
-$discountedPrice = Discounter::calculate($basePrice, $cartQty, $rules)->get();
+$discounter = new SimpleDiscounter();
+
+$discountedPrice = $discounter->calculate($basePrice, $cartQty, $rules)->get();
 ```
 
 ### Available operators:
@@ -48,11 +50,12 @@ $discountedPrice = Discounter::calculate($basePrice, $cartQty, $rules)->get();
  - `>` Greater than
  - `<` Less than
  - `=` Equal to
- 
- ### Available discount types:
+
+
+### Available discount types:
  - Fixed amount (`fixed`)
  - Percentage (`percentage`)
- 
+
 
 ### Rule explanations:
 ```php
@@ -62,5 +65,3 @@ $rule1->qty = 10; // Set the wanted cart qty
 $rule1->amount = 12; // Set the amount of discount
 $rule1->type = 'percentage'; // Set the type of discount
 ```
- 
- 
