@@ -24,17 +24,17 @@ abstract class BaseDiscounter
      * Method to apply rule if it evalutes to true
      * If rule applies, call closure.
      *
-     * @param \stdClass $rule
+     * @param array $rule
      * @param \Closure  $fn
      *
      * @return void
      *
      * @throws \Exception   If unkown operator
      */
-    protected function maybeApply(\stdClass $rule, \Closure $fn)
+    protected function maybeApply(array $rule, \Closure $fn)
     {
-        if (!$this->hasOperator($rule->operator)) {
-            throw new \Exception('Unkown operator "' . $rule->operator . '"');
+        if (!$this->hasOperator($rule['operator'])) {
+            throw new \Exception('Unkown operator "' . $rule['operator'] . '"');
         }
 
         if (!$this->shouldApply($rule)) {
@@ -49,17 +49,17 @@ abstract class BaseDiscounter
      * Check if rule applies with the operator,
      * rule qty and product qty
      *
-     * @param \stdClass $rule
+     * @param array $rule
      *
      * @return bool
      */
-    protected function shouldApply(\stdClass $rule)
+    protected function shouldApply(array $rule)
     {
         // Call the the mapped method,
         // with qty parameters to do logic
         return call_user_func_array(
-            [$this, $this->operators[$rule->operator]],
-            [$this->qty, $rule->qty]
+            [$this, $this->operators[$rule['operator']]],
+            [$this->qty, $rule['qty']]
         );
     }
 

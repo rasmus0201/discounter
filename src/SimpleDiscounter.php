@@ -83,16 +83,16 @@ class SimpleDiscounter extends BaseDiscounter implements Discountable
     /**
      * Calculate the price for the current rule
      *
-     * @param \stdClass $rule
+     * @param array $rule
      *
      * @return float
      */
     private function priceAfterRule($rule)
     {
-        if ($rule->type == 'percentage') {
-            return self::calculatePercentage($this->price, $rule->amount);
+        if ($rule['type'] == 'percentage') {
+            return self::calculatePercentage($this->price, $rule['amount']);
         }
 
-        return self::calculateFixed($this->price, $rule->amount);
+        return self::calculateFixed($this->price, $rule['amount']);
     }
 }
