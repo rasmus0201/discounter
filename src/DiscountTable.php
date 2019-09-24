@@ -66,7 +66,7 @@ class DiscountTable
             break;
         }
 
-        return $table;
+        return $this->table;
     }
 
     /**
