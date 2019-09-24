@@ -8,7 +8,7 @@ class DiscountTable
 {
     private $discounter;
 
-    private $row = 0;
+    private $qty = 0;
     private $price = 0;
     private $discount = 0;
     private $table = [];
@@ -33,8 +33,8 @@ class DiscountTable
      */
     public function get(float $basePrice, array $rules)
     {
-        if (empty($this->rules)) {
-            return;
+        if (empty($rules)) {
+            return [];
         }
 
         $this->price = $basePrice;
