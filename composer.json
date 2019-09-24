@@ -20,5 +20,8 @@
                 "Bundsgaard\\Discounter\\DiscounterServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^5.0@dev"
     }
 }
