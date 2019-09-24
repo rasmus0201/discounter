@@ -20,6 +20,8 @@ interface Discountable
 
     /**
      * Set the number of decimal places
+     *
+     * @param int $precision
      */
     public function setPrecision(int $precision);
 }
