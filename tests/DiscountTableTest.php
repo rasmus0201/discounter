@@ -80,4 +80,14 @@ class DiscountTableTest extends TestCase
         $this->assertEquals(15, $table[4]['amount']);
         $this->assertEquals(15, $table[4]['amount']);
     }
+
+    public function test_get_table_for_empty_ruleset()
+    {
+        $discounter = new SelectiveDiscounter();
+        $discountTable = new DiscountTable($discounter);
+
+        $table = $discountTable->get($this->basePrice, []);
+
+        $this->assertCount(0, $table);
+    }
 }
