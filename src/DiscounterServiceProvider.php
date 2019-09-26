@@ -4,9 +4,6 @@ namespace Bundsgaard\Discounter;
 
 use Illuminate\Support\ServiceProvider;
 
-/**
- * @codeCoverageIgnore
- */
 class DiscounterServiceProvider extends ServiceProvider
 {
     /**
