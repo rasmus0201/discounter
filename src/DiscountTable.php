@@ -8,7 +8,9 @@ class DiscountTable
 {
     private $discounter;
 
-    private $qty = 0;
+    private $showDiscountFreeRows = true;
+
+    private $qty = 1;
     private $price = 0;
     private $discount = 0;
     private $table = [];
@@ -45,8 +47,8 @@ class DiscountTable
         while (true) {
             $discount = $this->discounter->calculate($this->price, $this->qty, $rules)->get();
 
-            // If there's no discount, skip.
-            if (!$this->hasDiscount($discount)) {
+            // If there's no discount, do not add the row.
+            if (!$this->showDiscountFreeRows && !$this->hasDiscount($discount)) {
                 continue;
             }
 
@@ -67,6 +69,30 @@ class DiscountTable
         }
 
         return $this->table;
+    }
+
+    /**
+     * Hide rows which doesn't have any discounts
+     *
+     * @return this
+     */
+    public function hideDiscountFreeRows()
+    {
+        $this->showDiscountFreeRows = false;
+
+        return $this;
+    }
+
+    /**
+     * Show rows which doesn't have any discounts
+     *
+     * @return this
+     */
+    public function showDiscountFreeRows()
+    {
+        $this->showDiscountFreeRows = true;
+
+        return $this;
     }
 
     /**

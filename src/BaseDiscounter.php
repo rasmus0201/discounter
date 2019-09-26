@@ -2,6 +2,8 @@
 
 namespace Bundsgaard\Discounter;
 
+use Bundsgaard\Discounter\Exceptions\WrongOperatorException;
+
 abstract class BaseDiscounter
 {
     /**
@@ -29,12 +31,12 @@ abstract class BaseDiscounter
      *
      * @return void
      *
-     * @throws \Exception   If unkown operator
+     * @throws \WrongOperatorException   If unkown operator
      */
     protected function maybeApply(array $rule, \Closure $fn)
     {
         if (!$this->hasOperator($rule['operator'])) {
-            throw new \Exception('Unkown operator "' . $rule['operator'] . '"');
+            throw new WrongOperatorException('Unkown operator "' . $rule['operator'] . '"');
         }
 
         if (!$this->shouldApply($rule)) {
